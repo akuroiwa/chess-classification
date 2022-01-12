@@ -39,7 +39,7 @@ async def main(path="train-pgn", loop=1, time=20) -> None:
 
     await engine.quit()
 
-if __name__ == "__main__":
+def console_script():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("-p", "--path", dest='path', default="train-pgn", type=str, help="Directory where you want to save.  Default is train-pgn.")
     parser.add_argument("-l", "--loop", dest='loop', default=1, type=int, help="How many PGN files you want.  Default is 1.")
@@ -48,3 +48,6 @@ if __name__ == "__main__":
 
     asyncio.set_event_loop_policy(chess.engine.EventLoopPolicy())
     asyncio.run(main(args.path, args.loop, args.time))
+
+if __name__ == "__main__":
+    console_script()

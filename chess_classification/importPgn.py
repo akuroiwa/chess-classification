@@ -45,9 +45,12 @@ def importPgn(pgn_file):
         readPgn(eval_pgn)
 
 
-if __name__ == "__main__":
+def console_script():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("-p", "--path", dest='path', default="train-pgn", type=str, help="Directory from which you want to read.  Default is train-pgn.")
     args = parser.parse_args()
 
     readPgn(args.path)
+
+if __name__ == "__main__":
+    console_script()
