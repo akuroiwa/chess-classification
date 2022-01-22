@@ -19,8 +19,11 @@ def importPgn(pgn_file):
     pgn = open(pgn_file)
     train_df = pd.DataFrame(columns=["text", "labels"])
 
-    while game := chess.pgn.read_game(pgn):
+    # Python>=3.8
+    # while game := chess.pgn.read_game(pgn):
+    while True:
         try:
+            game = chess.pgn.read_game(pgn)
             result = game.headers["Result"]
             if result == "1-0":
                 result_label = 2
@@ -34,7 +37,7 @@ def importPgn(pgn_file):
                 board.push(move)
                 train_df = train_df.append({"text": board.fen(), "labels": result_label}, ignore_index=True)
         except:
-            continue
+            break
     return train_df
 
     def create_json_for_train_and_eval(self, train_pgn="train-pgn", eval_pgn="eval-pgn"):

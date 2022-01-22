@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='chess_classification',
-    version='0.0.1',
+    version='0.0.2',
     url='https://github.com/akuroiwa/chess-classification',
     # # PyPI url
     # download_url='',
@@ -17,7 +17,8 @@ setup(
     long_description=open("README.md", "r").read(),
     long_description_content_type='text/markdown',
     zip_safe=False,
-    python_requires=">=3.8",
+    # python_requires=">=3.8",
+    python_requires=">=3.7",
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Console',
@@ -28,7 +29,8 @@ setup(
         "Operating System :: OS Independent",
         'License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)',
         'Programming Language :: Python :: 3 :: Only',
-        'Programming Language :: Python :: 3.8',
+        # 'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.7',
         'Topic :: Scientific/Engineering',
         'Topic :: Software Development',
         "Topic :: Games/Entertainment :: Board Games",
