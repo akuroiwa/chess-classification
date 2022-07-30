@@ -9,7 +9,7 @@ setup(
     url='https://github.com/akuroiwa/chess-classification',
     # # PyPI url
     # download_url='',
-    license='GNU/LGPLv3',
+    license='GNU/GPLv3+',
     author='Akihiro Kuroiwa',
     author_email='akuroiwa@env-reform.com',
     description='Deep learning in FEN’s win / loss evaluation.',
@@ -27,7 +27,7 @@ setup(
         'Intended Audience :: Education',
         'Intended Audience :: Science/Research',
         "Operating System :: OS Independent",
-        'License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)',
+        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
         'Programming Language :: Python :: 3 :: Only',
         # 'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.7',

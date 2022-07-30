@@ -13,7 +13,11 @@ class ChessClassification(object):
 
         # Optional model configuration
         self.model_args = ClassificationArgs(num_train_epochs=1)
+        # self.model_args.reprocess_input_data = True
         self.model_args.overwrite_output_dir = True
+        # self.model_args.use_cached_eval_features = True
+        # self.model_args.silent = True
+        # self.model_args.logging_steps = 0
 
         self.cuda_available = torch.cuda.is_available()
 
@@ -33,7 +37,8 @@ class ChessClassification(object):
 
         eval_df = pd.read_json(eval_json)
         # Evaluate the model
-        result, model_outputs, wrong_predictions = self.model.eval_model(eval_df)
+        # result, model_outputs, wrong_predictions = self.model.eval_model(eval_df)
+        result, model_outputs, wrong_predictions = self.model.eval_model(eval_df, verbose=False, silent=True)
 
     def predict_fen(self, fen):
         # Make predictions with the model

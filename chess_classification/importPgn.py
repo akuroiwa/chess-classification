@@ -40,12 +40,12 @@ def importPgn(pgn_file):
             break
     return train_df
 
-    def create_json_for_train_and_eval(self, train_pgn="train-pgn", eval_pgn="eval-pgn"):
-        # Preparing train data
-        readPgn(train_pgn)
+def create_json_for_train_and_eval(train_pgn="train-pgn", eval_pgn="eval-pgn"):
+    # Preparing train data
+    readPgn(train_pgn)
 
-        # Preparing eval data
-        readPgn(eval_pgn)
+    # Preparing eval data
+    readPgn(eval_pgn)
 
 
 def console_script():
