@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='chess_classification',
-    version='0.0.2',
+    version='0.0.3',
     url='https://github.com/akuroiwa/chess-classification',
     # # PyPI url
     # download_url='',
@@ -22,19 +22,18 @@ setup(
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Console',
-        "Intended Audience :: Developers",
-        "Intended Audience :: Science/Research",
-        'Intended Audience :: Education',
+        'Intended Audience :: Developers',
         'Intended Audience :: Science/Research',
-        "Operating System :: OS Independent",
+        'Intended Audience :: Education',
+        'Operating System :: OS Independent',
         'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
         'Programming Language :: Python :: 3 :: Only',
         # 'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.7',
         'Topic :: Scientific/Engineering',
         'Topic :: Software Development',
-        "Topic :: Games/Entertainment :: Board Games",
-        "Topic :: Software Development :: Libraries :: Python Modules",
+        'Topic :: Games/Entertainment :: Board Games',
+        'Topic :: Software Development :: Libraries :: Python Modules',
     ],
     platforms='any',
     keywords=['classification', 'stockfish', 'transformer', 'bert', 'chess', 'fen', 'pgn'],
