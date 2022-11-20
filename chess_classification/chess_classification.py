@@ -42,7 +42,8 @@ class ChessClassification(object):
 
     def predict_fen(self, fen):
         # Make predictions with the model
-        prediction, raw_outputs = self.model.predict([fen])
+        fen_token = fen.replace("/", " ")
+        # fen_token = ' '.join(list(fen))
+        prediction, raw_outputs = self.model.predict([fen_token])
         # print(prediction, raw_outputs)
         return prediction, raw_outputs
-

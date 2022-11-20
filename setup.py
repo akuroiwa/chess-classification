@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='chess_classification',
-    version='0.0.3',
+    version='0.0.4',
     url='https://github.com/akuroiwa/chess-classification',
     # # PyPI url
     # download_url='',

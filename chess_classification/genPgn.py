@@ -18,7 +18,10 @@ async def main(path="train-pgn", loop=1, time=20, fen=None) -> None:
     os.makedirs(path, exist_ok=True)
 
     for i in range(loop):
-        board = chess.Board(fen)
+        if fen:
+            board = chess.Board(fen)
+        else:
+            board = chess.Board()
         game = chess.pgn.Game()
         game.headers["Event"]
         game.setup(board)

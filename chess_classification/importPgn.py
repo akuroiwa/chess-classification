@@ -12,7 +12,9 @@ def readPgn(path):
     for file in os.listdir(path):
         if file.endswith(".pgn"):
             file_path = os.path.join(path, file)
-            train_df = train_df.append(importPgn(file_path), ignore_index=True)
+            # train_df = train_df.append(importPgn(file_path), ignore_index=True)
+            df = pd.DataFrame(importPgn(file_path), columns=["text", "labels"])
+            train_df = pd.concat([train_df, df], ignore_index=True)
     train_df.to_json(os.path.join(path, "fen.json"))
 
 def importPgn(pgn_file):
@@ -35,7 +37,11 @@ def importPgn(pgn_file):
             board = game.board()
             for move in game.mainline_moves():
                 board.push(move)
-                train_df = train_df.append({"text": board.fen(), "labels": result_label}, ignore_index=True)
+                fen_token = board.fen().replace("/", " ")
+                # fen_token = ' '.join(list(board.fen()))
+                # train_df = train_df.append({"text": fen_token, "labels": result_label}, ignore_index=True)
+                df = pd.DataFrame([{"text": fen_token, "labels": result_label}], columns=["text", "labels"])
+                train_df = pd.concat([train_df, df], ignore_index=True)
         except:
             break
     return train_df
