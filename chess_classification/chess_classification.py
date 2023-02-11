@@ -2,6 +2,7 @@ from simpletransformers.classification import ClassificationModel, Classificatio
 import pandas as pd
 import logging
 import torch
+import os
 
 logging.basicConfig(level=logging.INFO)
 transformers_logger = logging.getLogger("transformers")
@@ -9,11 +10,12 @@ transformers_logger.setLevel(logging.WARNING)
 
 class ChessClassification(object):
 
-    def __init__(self):
+    def __init__(self, output_dir='chess-outputs/'):
 
         # Optional model configuration
         self.model_args = ClassificationArgs(num_train_epochs=1)
         # self.model_args.reprocess_input_data = True
+        self.model_args.output_dir = output_dir
         self.model_args.overwrite_output_dir = True
         # self.model_args.use_cached_eval_features = True
         # self.model_args.silent = True
@@ -22,13 +24,29 @@ class ChessClassification(object):
         self.cuda_available = torch.cuda.is_available()
 
         # Create a ClassificationModel
-        self.model = ClassificationModel(
-            'bert',
-            'bert-base-cased',
-            num_labels=3,
-            args=self.model_args,
-            use_cuda=self.cuda_available
-        )
+        if os.path.exists(os.path.join(output_dir, "pytorch_model.bin")):
+            self.model = ClassificationModel(
+                # 'bert',
+                'electra',
+                # "roberta",
+                output_dir,
+                num_labels=3,
+                args=self.model_args,
+                use_cuda=self.cuda_available
+                )
+        else:
+            self.model = ClassificationModel(
+                # 'bert',
+                # 'bert-base-cased',
+                'electra',
+                'google/electra-small-discriminator',
+                # 'google/electra-base-discriminator',
+                # "roberta",
+                # "roberta-base",
+                num_labels=3,
+                args=self.model_args,
+                use_cuda=self.cuda_available
+                )
 
     def train_and_eval(self, train_json, eval_json):
         train_df = pd.read_json(train_json)

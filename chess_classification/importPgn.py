@@ -3,6 +3,7 @@ Create a dataset in json file format from PGN files.
 """
 
 import os
+import re
 import chess.pgn
 import pandas as pd
 import argparse
@@ -38,6 +39,20 @@ def importPgn(pgn_file):
             for move in game.mainline_moves():
                 board.push(move)
                 fen_token = board.fen().replace("/", " ")
+
+                # fen1, fen2 = board.fen().split(' ', 1)
+                # l = []
+                # c = re.compile(r'[0-9]')
+                # for i in fen1:
+                #     if c.fullmatch(i):
+                #         for o in range(int(i)):
+                #             l.append('_')
+                #     else:
+                #         l.append(i)
+                # l.append(fen2)
+                # fen_token = ' '.join(l)
+
+                # fen_token = board.fen()
                 # fen_token = ' '.join(list(board.fen()))
                 # train_df = train_df.append({"text": fen_token, "labels": result_label}, ignore_index=True)
                 df = pd.DataFrame([{"text": fen_token, "labels": result_label}], columns=["text", "labels"])
