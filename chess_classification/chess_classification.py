@@ -32,7 +32,8 @@ class ChessClassification(object):
                 output_dir,
                 num_labels=3,
                 args=self.model_args,
-                use_cuda=self.cuda_available
+                use_cuda=self.cuda_available,
+                from_tf=True
                 )
         else:
             self.model = ClassificationModel(
@@ -45,7 +46,8 @@ class ChessClassification(object):
                 # "roberta-base",
                 num_labels=3,
                 args=self.model_args,
-                use_cuda=self.cuda_available
+                use_cuda=self.cuda_available,
+                from_tf=True
                 )
 
     def train_and_eval(self, train_json, eval_json):
